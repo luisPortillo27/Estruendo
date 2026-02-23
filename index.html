@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Estruendo</title>
+
+    <!-- Estilos CSS -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Comic Sans MS", sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+
+        h1,
+        h2 {
+            color: #333;
+        }
+
+        .contenedor {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        img {
+            margin: 10px;
+            border-radius: 10px;
+        }
+
+        video {
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+
+        a {
+            font-size: 18px;
+            color: #0077cc;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        button {
+            background-color: #0077cc;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #005fa3;
+        }
+
+        .red {
+            background-color: #ffdddd;
+            color: #800000;
+        }
+
+        .blue {
+            background-color: #dde9ff;
+            color: #003366;
+        }
+
+        .green {
+            background-color: #ddffdd;
+            color: #004d00;
+        }
+
+        .dark {
+            background-color: #1a1a1a;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="contenedor">
+        <h1 id="saludo">Bienvenid@s a Estruendo 3.0</h1>
+        <button onclick="saludarUsuario()">Escribeme tu nombre </button>
+        <button onclick="cambiarTema()">Cambiar tema</button>
+
+        <br>
+        <img src="imagenes/dolar.png" alt="Imagen" width="300">
+        <img src="imagenes/dolar.png" alt="Imagen" width="300">
+
+        <h2>Enlace</h2>
+        <a href="https://drive.google.com/drive/folders/1R65h3b7wm8d80bSW20E497eEEQlI_Ve8?usp=drive_link"
+            target="_blank">
+            Visitar sitio
+        </a>
+
+        <h2>Videos de interés</h2>
+        <video width="250" controls>
+            <source src="videos/pasoApaso.mov" type="video/mp4">
+        </video>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function saludarUsuario() {
+            let nombre = prompt("¿Cuál es tu nombre?");
+            if (nombre && nombre.trim() !== "") {
+                document.getElementById("saludo").innerText = "Holaaaaaaaaaaaaa, " + nombre + " Bienvenid@";
+            } else {
+                alert("Escribe tu nombre para saludarte.");
+            }
+        }
+
+        const temas = ["red", "blue", "green"];
+        let indice = 0;
+
+        function cambiarTema() {
+            document.body.className = temas[indice];
+            indice = (indice + 1) % temas.length;
+        }
+
+    </script>
+
+</body>
+
+</html>
