@@ -176,38 +176,36 @@
 
         .active .flecha { transform: rotate(180deg); }
 
-        .btn-pdf {
-            padding: 10px 18px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            text-decoration: none;
-            color: white;
-            font-size: 13px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-family: inherit;
-            transition: transform 0.2s;
-        }
+		.opciones-pdf {
+			display: flex;
+			width: 25%;           /* Solo el 50% de la pantalla */
+		}
 
-        .btn-down { background-color: #2E7325; }
+		.btn-down {
+			background-color: #2E7325;
+			color: white;
+			width: 100%;          /* El botón llena el 50% del contenedor padre */
+			padding: 12px;
+			border-radius: 8px;  /* Diseño redondeado "píldora" */
+			font-size: 14px;
+			letter-spacing: 1px;
+			justify-content: center; /* Centra el texto dentro del botón */
+			
+		}
+
 
         .link-drive {
             display: inline-block;
             margin-top: 10px;
-            color: var(--azul-fuerte);
+            color: white;
             font-weight: bold;
             text-decoration: none;
-            border: 2px solid var(--azul-fuerte);
             padding: 10px 20px;
             border-radius: 8px;
             transition: all 0.3s;
-        }
+			background-color: #2E7325; ----
+			border: 1px solid red;
 
-        .link-drive:hover {
-            background-color: var(--azul-fuerte);
-            color: white;
         }
 
         .btn-entrar {
