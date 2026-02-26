@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exploradores</title>
+    <style>
+        :root {
+            --azul-claro: #4facfe;
+            --azul-fuerte: #0077ff;
+            --marron-madera: #8b4513;
+            --verde-bosque:  #0D1B2A; 
+            --crema-acordeon: #98FB98; 
+            --verde-descarga: #28a745;
+            --dorado-fuego: #ffcc00;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: "Century Gothic", AppleGothic, sans-serif;
+            background-color: var(--verde-bosque);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+        }
+
+        /* --- Estilo del Encabezado (El Plante) --- */
+        .header-campamento {
+            text-align: center;
+            margin-bottom: 25px;
+            padding: 10px;
+        }
+
+        .titulo-principal {
+            color: var(--dorado-fuego);
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 3px 3px 0px #6d0725, 5px 5px 15px rgba(0,0,0,0.6);
+            line-height: 1;
+        }
+
+        .bloque-d {
+            display: block;
+            color: var(--azul-claro);
+            font-size: 1.4rem;
+            font-weight: bold;
+            letter-spacing: 5px;
+            margin-top: 5px;
+            text-transform: uppercase;
+            opacity: 0.9;
+        }
+
+        /* --- Modal de Bienvenida --- */
+        #modal-bienvenida {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .modal-content {
+            background: #cdffd8;
+            padding: 40px;
+            border-radius: 30px;
+            text-align: center;
+            box-shadow: 0 0 30px #6d0725;
+            max-width: 90%;
+            width: 320px;
+            color: #333;
+        }
+
+        .modal-content input {
+            background: #f7f7f7;
+            padding: 12px;
+            width: 80%;
+            margin: 20px 0;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+            font-family: inherit;
+            text-align: center;
+        }
+
+        /* --- Contenedor Principal --- */
+        .contenedor {
+            background-color: rgba(255, 255, 255, 0.08); 
+            padding: 25px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 600px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1#titulo-bienvenida {
+            color: white;
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            font-weight: normal;
+        }
+
+        /* --- Estilos del Acordeón --- */
+        .acordeon-item {
+            border: 1px solid #339;
+            margin-bottom: 12px;
+            border-radius: 10px;
+            background-color: #fff76b; 
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .acordeon-header {
+            width: 100%;
+            padding: 18px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-weight: bold;
+            font-size: 15px;
+            text-align: left;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: inherit;
+            color: #222;
+        }
+
+        .acordeon-header:hover { background: rgba(0,0,0,0.05); }
+        .icono-seccion { font-size: 24px; margin-right: 15px; }
+        .flecha { margin-left: auto; font-size: 12px; transition: transform 0.3s; }
+
+        .acordeon-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+            background: #FFFDD9; 
+            color: #333;
+        }
+
+        .active .acordeon-content {
+            max-height: 1500px; 
+            padding: 20px;
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .active .flecha { transform: rotate(180deg); }
+
+        /* --- Botones y Enlaces --- */
+        .opciones-pdf {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin: 15px 0;
+        }
+
+        .btn-pdf {
+            padding: 10px 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: inherit;
+            transition: transform 0.2s;
+        }
+
+        .btn-pdf:active { transform: scale(0.95); }
+        .btn-view { background-color: var(--azul-fuerte); }
+        .btn-down { background-color: var(--verde-descarga); }
+
+        .link-drive {
+            display: inline-block;
+            margin-top: 10px;
+            color: var(--azul-fuerte);
+            font-weight: bold;
+            text-decoration: none;
+            border: 2px solid var(--azul-fuerte);
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .link-drive:hover {
+            background-color: var(--azul-fuerte);
+            color: white;
+        }
+
+        .pdf-wrapper {
+            display: none;
+            position: relative;
+            padding-bottom: 140%; 
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #eee;
+            margin-top: 15px;
+        }
+
+        .pdf-wrapper iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+        }
+
+        .btn-entrar {
+            padding: 12px 35px;
+            background: var(--verde-bosque);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            font-family: inherit;
+        }
+		
+		.logo {
+            width: 110px;
+            height: auto;
+            margin-bottom: 15px;
+            filter: drop-shadow(0px 0px 10px rgba(255, 204, 0, 0.5));
+		}
+    </style>
+</head>
+<body>
+
+    <div id="modal-bienvenida">
+        <div class="modal-content">
+            <h2>¡Hola, Explorador!</h2>
+            <p>Escribe tu nombre para entrar a la aventura:</p>
+            <input type="text" id="nombreInput" placeholder="Tu nombre..." onkeypress="handleKeyPress(event)">
+            <br>
+            <button class="btn-entrar" onclick="saludar()">COMENZAR</button>
+        </div>
+    </div>
+
+    <header class="header-campamento">
+        <h2 class="titulo-principal">Campamento Estruendo 3.0</h2>
+		<hr></hr><hr></hr>
+		<img src="img/logo.png" class="logo">
+        <span class="bloque-d">- BLOQUE D -</span>
+    </header>
+
+    <div class="contenedor">
+        <h1 id="titulo-bienvenida">Bienvenido</h1>
+
+        <div class="acordeon-item">
+            <button class="acordeon-header" onclick="toggleAcordeon(this)">
+                <span class="icono-seccion">🔥</span> FOGATA <span class="flecha">▼</span>
+            </button>
+            <div class="acordeon-content">
+                <p>...</p>
+            </div>
+        </div>
+
+        <div class="acordeon-item">
+            <button class="acordeon-header" onclick="toggleAcordeon(this)">
+                <span class="icono-seccion">🪢</span> NUDOS Y AMARRES <span class="flecha">▼</span>
+            </button>
+            <div class="acordeon-content">
+                <p><b>Recursos en la nube:</b></p>
+                <a class="link-drive" href="https://drive.google.com/drive/folders/1MF7-ANXuz2VRJfAF3w90lhhUUbQZqcWs?usp=sharing" target="_blank">Ver Carpeta Drive</a>
+            </div>
+        </div>
+
+        <div class="acordeon-item">
+            <button class="acordeon-header" onclick="toggleAcordeon(this)">
+                <span class="icono-seccion">🧭</span> BRÚJULA <span class="flecha">▼</span>
+            </button>
+            <div class="acordeon-content">
+                <p><b>Recursos en la nube:</b></p>
+                <a class="link-drive" href="https://drive.google.com/drive/folders/1bBgfzzPR8E-NggEDjdyj5Ew7oSgLAuAA?usp=sharing" target="_blank">Ver Carpeta Drive</a>
+            </div>
+        </div>
+
+        <div class="acordeon-item">
+            <button class="acordeon-header" onclick="toggleAcordeon(this)">
+                <span class="icono-seccion">🪵</span> CONSTRUCCIONES <span class="flecha">▼</span>
+            </button>
+            <div class="acordeon-content">
+                <p>...</p>
+            </div>
+        </div>
+
+        <div class="acordeon-item">
+            <button class="acordeon-header" onclick="toggleAcordeon(this)">
+                <span class="icono-seccion">📖</span> RETO ESPIRITUAL <span class="flecha">▼</span>
+            </button>
+            <div class="acordeon-content">
+                <p><b>Palabra de Dios:</b></p>
+                <a class="link-drive" href="https://www.biblia.es/reina-valera-1960.php" target="_blank">La Biblia - Reina Valera 1960</a>
+                
+                <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
+                
+                <p><b>Estudio: El plan de Dios</b></p>                
+                <div class="opciones-pdf">
+                    <button class="btn-pdf btn-view" onclick="togglePDF()">Visualizar</button>
+                    <a href="pdf/6 El plan de Dios.pdf" download class="btn-pdf btn-down">Descargar PDF</a>
+                </div>
+
+                <div id="wrapper-pdf-estudio" class="pdf-wrapper">
+                    <iframe src="pdf/6 El plan de Dios.pdf#toolbar=1" frameborder="0"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function saludar() {
+            const nombre = document.getElementById('nombreInput').value;
+            if (nombre.trim() !== "") {
+                document.getElementById('titulo-bienvenida').innerText = `¡Bienvenido, ${nombre}!`;
+                document.getElementById('modal-bienvenida').style.display = 'none';
+            } else {
+                alert("Por favor, escribe tu nombre.");
+            }
+        }
+
+        function handleKeyPress(e) {
+            if (e.keyCode === 13) { saludar(); }
+        }
+
+        function toggleAcordeon(boton) {
+            const item = boton.parentElement;
+            const isActive = item.classList.contains('active');
+            
+            // Cerrar otros
+            document.querySelectorAll('.acordeon-item').forEach(i => {
+                i.classList.remove('active');
+            });
+
+            // Alternar el actual
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        }
+
+        function togglePDF() {
+            const wrapper = document.getElementById('wrapper-pdf-estudio');
+            wrapper.style.display = (wrapper.style.display === "block") ? "none" : "block";
+        }
+    </script>
+
+</body>
+</html>
