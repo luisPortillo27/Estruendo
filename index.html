@@ -46,7 +46,7 @@
             line-height: 1;
         }
 
-        /* NUEVO ESTILO PARA FECHA Y HORA */
+        /* ESTILO PARA FECHA, HORA Y AUTOR */
         #reloj-contenedor {
             color: #ffdd45;
             font-family: "Century Gothic", AppleGothic, sans-serif;
@@ -55,6 +55,15 @@
             margin-top: 10px;
             letter-spacing: 1px;
             text-transform: capitalize;
+        }
+
+        .autor-texto {
+            display: block;
+			color: #ffdd45;
+            font-size: 0.9rem;
+            margin-top: 8px;
+            opacity: 0.9;
+            text-transform: none; /* Para que no salga todo en mayúsculas si no quieres */
         }
 
         .bloque {
@@ -200,6 +209,8 @@
             font-size: 14px;
             letter-spacing: 1px;
             justify-content: center;
+            text-decoration: none;
+            text-align: center;
         }
 
         .link-drive {
@@ -254,7 +265,7 @@
                 <img src="iconos/fogata.png" class="icono-img" alt="Icono"> FOGATA <span class="flecha">▼</span>
             </button>
             <div class="acordeon-content">
-                <p>...</p>
+                <p>Información sobre tipos de fogatas y seguridad.</p>
             </div>
         </div>
 
@@ -265,11 +276,11 @@
             <div class="acordeon-content">
                 <p><b>Recursos en la nube:</b></p>
                 <a class="link-drive" href="https://drive.google.com/drive/folders/1MF7-ANXuz2VRJfAF3w90lhhUUbQZqcWs?usp=sharing" target="_blank">Ver Carpeta Drive</a>
-            <p><b>Documento guía de nudos y amarres:</b></p>                
+                <p><b>Documento guía de nudos y amarres:</b></p>                
                 <div class="opciones-pdf">
                     <a href="pdf/NudosAmarres.pdf" download class="btn-pdf btn-down">Descargar PDF</a>
                 </div>
-			</div>
+            </div>
         </div>
 
         <div class="acordeon-item">
@@ -280,10 +291,10 @@
                 <p><b>Brújula en línea:</b></p>
                 <a class="link-drive" href="https://www.brujula-online.com/es-app/" target="_blank">Opción 1</a>
                 <a class="link-drive" href="https://onlinecompass.in/es/" target="_blank">Opción 2</a>
-					<hr style="margin: 20px 0; border: 0; border-top: 1px solid #0B380F;">
+                <hr style="margin: 20px 0; border: 0; border-top: 1px solid #0B380F;">
                 <p><b>Recursos en la nube:</b></p>
                 <a class="link-drive" href="https://drive.google.com/drive/folders/1bBgfzzPR8E-NggEDjdyj5Ew7oSgLAuAA?usp=sharing" target="_blank">Ver Carpeta Drive</a>
-					<hr style="margin: 20px 0; border: 0; border-top: 1px solid #0B380F;">
+                <hr style="margin: 20px 0; border: 0; border-top: 1px solid #0B380F;">
                 <p><b>Documento guía de brújula:</b></p>                
                 <div class="opciones-pdf">
                     <a href="pdf/llllll.pdf" download class="btn-pdf btn-down">Descargar PDF</a>
@@ -296,7 +307,7 @@
                 <img src="iconos/tronco.png" class="icono-img" alt="Icono"> CONSTRUCCIONES <span class="flecha">▼</span>
             </button>
             <div class="acordeon-content">
-                <p>...</p>
+                <p>Proyectos de pionerismo y construcciones rústicas.</p>
             </div>
         </div>
 
@@ -315,9 +326,9 @@
             </div>
         </div>
     </div>
-
+<span class="autor-texto">by: Luis Portillo</span>
     <script>
-        // FUNCIÓN PARA ACTUALIZAR FECHA Y HORA
+        // FUNCIÓN PARA ACTUALIZAR FECHA, HORA Y AUTOR
         function actualizarReloj() {
             const ahora = new Date();
             
@@ -337,9 +348,12 @@
                 hour12: true 
             });
 
-            // Unimos todo con el formato solicitado
-            document.getElementById('reloj-contenedor').innerHTML = `${fechaFormateada} <br>
-			${horaFormateada}`;
+            // Se inserta la fecha, la hora y el crédito de autor con el mismo estilo
+            document.getElementById('reloj-contenedor').innerHTML = `
+                ${fechaFormateada} <br>
+                ${horaFormateada} <br>
+                
+            `;
         }
 
         // Ejecutar el reloj cada segundo
