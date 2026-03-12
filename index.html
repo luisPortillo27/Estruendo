@@ -13,6 +13,7 @@
             --crema-acordeon: #98FB98; 
             --verde-descarga: #28a745;
             --dorado-fuego: #ffcc00;
+            --rojo-youtube: #c4302b;
         }
 
         body {
@@ -46,10 +47,8 @@
             line-height: 1;
         }
 
-        /* ESTILO PARA FECHA, HORA Y AUTOR */
         #reloj-contenedor {
             color: #ffdd45;
-            font-family: "Century Gothic", AppleGothic, sans-serif;
             font-size: 1.1rem;
             text-align: center;
             margin-top: 10px;
@@ -59,25 +58,14 @@
 
         .autor-texto {
             display: block;
-			color: #ffdd45;
+            color: #ffdd45;
             font-size: 0.9rem;
-            margin-top: 8px;
+            margin-top: 15px;
             opacity: 0.9;
-            text-transform: none; /* Para que no salga todo en mayúsculas si no quieres */
+            text-align: center;
         }
 
-        .bloque {
-            display: block;
-            color: #191970;
-            font-size: 1.4rem;
-            font-weight: bold;
-            letter-spacing: 2px;
-            margin-top: 2px;
-            text-transform: uppercase;
-            opacity: 1.6;
-        }
-
-        /* --- Modal de Bienvenida --- */
+        /* --- Modal --- */
         #modal-bienvenida {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -100,15 +88,11 @@
         }
 
         .modal-content input {
-            background: #f7f7f7;
             padding: 12px;
             width: 80%;
             margin: 20px 0;
             border: 2px solid #ddd;
             border-radius: 8px;
-            font-size: 16px;
-            outline: none;
-            font-family: inherit;
             text-align: center;
         }
 
@@ -121,6 +105,7 @@
             max-width: 600px;
             backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            box-sizing: border-box;
         }
 
         h1#titulo-bienvenida {
@@ -128,10 +113,9 @@
             text-align: center;
             margin-bottom: 25px;
             font-size: 1.5rem;
-            font-weight: normal;
         }
 
-        /* --- Estilos del Acordeón --- */
+        /* --- Acordeón --- */
         .acordeon-item {
             border: 2px solid #0CB316;
             margin-bottom: 12px;
@@ -139,7 +123,6 @@
             background-color: #ADF78F; 
             overflow: hidden;
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            font-weight: bold;
         }
 
         .acordeon-header {
@@ -152,9 +135,7 @@
             border: none;
             font-weight: bold;
             font-size: 15px;
-            text-align: left;
             text-transform: uppercase;
-            letter-spacing: 1px;
             font-family: inherit;
             color: #222;
         }
@@ -163,66 +144,70 @@
             width: 30px; 
             height: 30px;
             margin-right: 15px;
-            object-fit: contain;
-            margin-bottom: 10px;
-            filter: drop-shadow(0px 0px 10px #035712);
-        }
-        
-        .logo {
-            width: 110px;
-            height: auto;
-            margin-bottom: 15px;
-            filter: drop-shadow(0px 0px 10px rgba(255, 204, 0, 0.5));
+            filter: drop-shadow(0px 0px 5px #035712);
         }
 
-        .acordeon-header:hover { background: rgba(0,0,0,0.05); }
-        .flecha { margin-left: auto; font-size: 12px; transition: transform 0.3s; }
+        .flecha { margin-left: auto; transition: transform 0.3s; }
 
         .acordeon-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.5s ease-in-out;
+            transition: max-height 0.4s ease-out;
             background: #D3FFB5; 
             color: #333;
+            padding: 0 20px; /* Padding lateral siempre presente */
         }
 
         .active .acordeon-content {
-            max-height: 1500px; 
+            max-height: 800px; 
             padding: 20px;
             border-top: 1px solid rgba(0,0,0,0.1);
         }
 
         .active .flecha { transform: rotate(180deg); }
 
-        .opciones-pdf {
+        /* --- Botones y Enlaces --- */
+        .opciones-enlaces {
             display: flex;
-            justify-content: center;
-            width: 40%;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center; /* Centra los botones */
         }
 
-        .btn-down {
-            background-color: #2E7325;
-            color: white;
-            width: 100%;
+        .btn-pdf {
+            display: inline-block;
+            text-decoration: none;
             padding: 12px;
             border-radius: 8px;
             font-size: 14px;
-            letter-spacing: 1px;
-            justify-content: center;
-            text-decoration: none;
+            font-weight: bold;
+            width: 80%; /* Ancho ajustado para móviles */
             text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .btn-pdf:active { transform: scale(0.98); }
+
+        .btn-down { background-color: #2E7325; color: white; }
+        .btn-youtube { background-color: var(--rojo-youtube); color: white; }
+
+        .separador-acordeon {
+            width: 100%;
+            margin: 15px 0;
+            border: 0;
+            border-top: 1px solid #0B380F;
+            opacity: 0.3;
         }
 
         .link-drive {
             display: inline-block;
-            margin-top: 10px;
+            margin: 5px;
             color: white;
-            font-weight: bold;
             text-decoration: none;
-            padding: 10px 20px;
+            padding: 10px 15px;
             border-radius: 8px;
-            transition: all 0.3s;
             background-color: #2E7325;
+            font-size: 0.9rem;
         }
 
         .btn-entrar {
@@ -232,14 +217,15 @@
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            font-size: 16px;
             font-weight: bold;
-            font-family: inherit;
         }
-        
+
+        .logo { width: 110px; margin-bottom: 15px; }
+
     </style>
 </head>
 <body>
+
     <div id="modal-bienvenida">
         <div class="modal-content">
             <h2>¡Hola, Explorador!</h2>
@@ -251,9 +237,8 @@
     </div>
 
     <header class="header-campamento">
-        <h2 class="titulo-principal">Campamento Estruendo 3.0</h2>
-        <hr><hr>
-        <img src="img/logo.png" class="logo">
+        <h2 class="titulo-principal">Campamento Estruendo 3.0</h2><br>
+        <img src="img/logo.png" class="logo" alt="Logo">
         <div id="reloj-contenedor">Cargando fecha...</div>
     </header>
 
@@ -264,12 +249,12 @@
             <button class="acordeon-header" onclick="toggleAcordeon(this)">
                 <img src="iconos/fogata.png" class="icono-img" alt="Icono"> FOGATA <span class="flecha">▼</span>
             </button>
-			<div class="acordeon-content">
-            <p><b>Documento guía de fogatas:</b></p>                
-                <div class="opciones-pdf">
+            <div class="acordeon-content">
+                <p><b>Recurso:</b></p>
+                <div class="opciones-enlaces">
                     <a href="pdf/Fogatas.pdf" download class="btn-pdf btn-down">Descargar PDF</a>
                 </div>
-			</div>
+            </div>
         </div>
 
         <div class="acordeon-item">
@@ -277,12 +262,21 @@
                 <img src="iconos/nudo.png" class="icono-img" alt="Icono"> NUDOS Y AMARRES <span class="flecha">▼</span>
             </button>
             <div class="acordeon-content">
-                <p><b>Documento guía de nudos y amarres:</b></p>                
-                <div class="opciones-pdf">
+                <p><b>Recurso:</b></p>
+                <div class="opciones-enlaces">
                     <a href="pdf/NudosAmarres.pdf" download class="btn-pdf btn-down">Descargar PDF</a>
+                    <hr class="separador-acordeon">
+					   <p style="text-align:center; color:#191970; font-weight:bold;">TUTORIALES</p>
+                    <a href="https://youtu.be/87GuMdoBxyw?si=Tn2kRWMJLA_9PcYU" target="_blank" class="btn-pdf btn-youtube">MARGARITA</a>
+					<a href="https://youtu.be/XLf7TNkcw3k?si=Ni_Z1MJH3u4PTRfh" target="_blank" class="btn-pdf btn-youtube">FUGITIVO</a>
+					<a href="https://youtu.be/1oFpG0_6B7M?si=T5P-4uG8-jQAh66V" target="_blank" class="btn-pdf btn-youtube">DIAGONAL</a>
+                    <a href="https://youtu.be/6Y738dsoRnc?si=mSvD-9AdfeIPH__Z" target="_blank" class="btn-pdf btn-youtube">CONTINUO</a>
+                    <a href="https://youtu.be/HnKa6iejUr0?si=UFhqkM3-fsKFM62v" target="_blank" class="btn-pdf btn-youtube">PESCADOR</a>
+                    <a href="https://youtu.be/-t3qFiWg-eM?si=u-mu5pFIi2PxJikI" target="_blank" class="btn-pdf btn-youtube">REDONDO</a>
                 </div>
             </div>
         </div>
+        
 
         <div class="acordeon-item">
             <button class="acordeon-header" onclick="toggleAcordeon(this)">
@@ -290,15 +284,14 @@
             </button>
             <div class="acordeon-content">
                 <p><b>Brújula en línea:</b></p>
-                <a class="link-drive" href="https://www.brujula-online.com/es-app/" target="_blank">Opción 1</a>
-                <a class="link-drive" href="https://onlinecompass.in/es/" target="_blank">Opción 2</a>
-                <hr style="margin: 20px 0; border: 0; border-top: 1px solid #0B380F;">
-                <p><b>Recursos en la nube:</b></p>
-                <a class="link-drive" href="https://drive.google.com/drive/folders/1bBgfzzPR8E-NggEDjdyj5Ew7oSgLAuAA?usp=sharing" target="_blank">Ver Carpeta Drive</a>
-                <hr style="margin: 20px 0; border: 0; border-top: 1px solid #0B380F;">
-                <p><b>Documento guía de brújula:</b></p>                
-                <div class="opciones-pdf">
-                    <a href="pdf/llllll.pdf" download class="btn-pdf btn-down">Descargar PDF</a>
+                <div style="text-align: center;">
+                    <a class="link-drive" href="https://www.brujula-online.com/es-app/" target="_blank">Opción 1</a>
+                    <a class="link-drive" href="https://onlinecompass.in/es/" target="_blank">Opción 2</a>
+                </div>
+                <hr class="separador-acordeon">
+                <p><b>Recursos:</b></p>
+                <div class="opciones-enlaces" style="margin-top:15px;">
+                    <a href="pdf/brujula.pdf" download class="btn-pdf btn-down">Descargar Guía PDF</a>
                 </div>
             </div>
         </div>
@@ -307,12 +300,12 @@
             <button class="acordeon-header" onclick="toggleAcordeon(this)">
                 <img src="iconos/tronco.png" class="icono-img" alt="Icono"> CONSTRUCCIONES <span class="flecha">▼</span>
             </button>
-			<div class="acordeon-content">
-			   <p><b>Documento guía de construcciones:</b></p>                
-            <div class="opciones-pdf">
-                <a href="pdf/Construcciones.pdf" download class="btn-pdf btn-down">Descargar PDF</a>
+            <div class="acordeon-content">
+                <p><b>Recurso:</b></p>
+                <div class="opciones-enlaces">
+                    <a href="pdf/Construcciones.pdf" download class="btn-pdf btn-down">Descargar PDF</a>
+                </div>
             </div>
-			</div>
         </div>
 
         <div class="acordeon-item">
@@ -321,50 +314,30 @@
             </button>
             <div class="acordeon-content">
                 <p><b>Palabra de Dios:</b></p>
-                <a class="link-drive" href="https://www.biblia.es/reina-valera-1960.php" target="_blank">La Biblia - Reina Valera 1960</a>
-                <hr style="margin: 20px 0; border: 0; border-top: 1px solid #0B380F;">
-                <span class="bloque">El plan de Dios</span><br>
-                <div class="opciones-pdf">
+                <a class="link-drive" href="https://www.biblia.es/reina-valera-1960.php" target="_blank" style="display:block; text-align:center;">Biblia Reina Valera 1960</a>
+                <hr class="separador-acordeon">
+                <p style="text-align:center; color:#191970; font-weight:bold;">EL PLAN DE DIOS</p>
+                <div class="opciones-enlaces">
                     <a href="pdf/6 El plan de Dios.pdf" download class="btn-pdf btn-down">Descargar PDF</a>
                 </div>
             </div>
         </div>
     </div>
-	
-<span class="autor-texto">by: Luis Portillo</span>
-<br><br>
+
+    <span class="autor-texto">by: Luis Portillo</span>
+
     <script>
-        // FUNCIÓN PARA ACTUALIZAR FECHA, HORA Y AUTOR
         function actualizarReloj() {
             const ahora = new Date();
-            
-            const opcionesFecha = { 
-                weekday: 'long', 
-                day: '2-digit', 
-                month: 'long', 
-                year: 'numeric' 
-            };
-            
+            const opcionesFecha = { weekday: 'long', day: '2-digit', month: 'long', year: 'numeric' };
             const fechaFormateada = ahora.toLocaleDateString('es-ES', opcionesFecha);
-            
-            const horaFormateada = ahora.toLocaleTimeString('en-US', { 
-                hour: '2-digit', 
-                minute: '2-digit', 
-                second: '2-digit', 
-                hour12: true 
-            });
+            const horaFormateada = ahora.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
 
-            // Se inserta la fecha, la hora y el crédito de autor con el mismo estilo
-            document.getElementById('reloj-contenedor').innerHTML = `
-                ${fechaFormateada} <br>
-                ${horaFormateada} <br>
-                
-            `;
+            document.getElementById('reloj-contenedor').innerHTML = `${fechaFormateada} <br> ${horaFormateada}`;
         }
 
-        // Ejecutar el reloj cada segundo
         setInterval(actualizarReloj, 1000);
-        actualizarReloj(); // Llamada inicial
+        actualizarReloj();
 
         function saludar() {
             const nombre = document.getElementById('nombreInput').value;
