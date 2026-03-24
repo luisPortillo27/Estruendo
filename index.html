@@ -56,29 +56,27 @@
             text-transform: capitalize;
         }
 
-		/* --- Estilo del Pie de Página (Autor y Fecha) --- */
+        /* --- Estilo del Pie de Página --- */
         .contenedor-autor {
-            display: flex;             /* Alinea en la misma línea */
-            justify-content: center;   /* Centra el bloque completo */
-            gap: 15px;                 /* Espacio entre nombre y fecha */
-            margin-top: 25px;          /* Separación con el contenido superior */
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
             opacity: 0.9;
             font-size: 0.9rem;
             width: 100%;
             max-width: 600px;
-            flex-wrap: wrap;           /* Permite bajar si no caben en móviles muy pequeños */
+            flex-wrap: wrap;
         }
 
-        /* Color específico para el Autor */
         .autor-texto {
-            color: var(--dorado-fuego); /* Usamos el dorado que definiste en :root */
+            color: var(--dorado-fuego);
             font-weight: bold;
         }
 
-        /* Color específico para la Fecha */
         .fecha-texto {
-            color: #98FB98; /* Mantenemos el verde menta original */
-            font-weight: normal; /* O bold si prefieres */
+            color: #98FB98;
+            font-weight: normal;
         }
 
         /* --- Modal --- */
@@ -171,7 +169,7 @@
             transition: max-height 0.4s ease-out;
             background: #D3FFB5; 
             color: #333;
-            padding: 0 20px; /* Padding lateral siempre presente */
+            padding: 0 20px;
         }
 
         .active .acordeon-content {
@@ -182,12 +180,12 @@
 
         .active .flecha { transform: rotate(180deg); }
 
-        /* --- Botones y Enlaces --- */
+        /* --- Botones --- */
         .opciones-enlaces {
             display: flex;
             flex-direction: column;
             gap: 10px;
-            align-items: center; /* Centra los botones */
+            align-items: center;
         }
 
         .btn-pdf {
@@ -197,13 +195,12 @@
             border-radius: 8px;
             font-size: 14px;
             font-weight: bold;
-            width: 80%; /* Ancho ajustado para móviles */
+            width: 80%;
             text-align: center;
             transition: transform 0.2s;
         }
 
         .btn-pdf:active { transform: scale(0.98); }
-
         .btn-down { background-color: #2E7325; color: white; }
         .btn-youtube { background-color: var(--rojo-youtube); color: white; }
 
@@ -282,17 +279,16 @@
                 <div class="opciones-enlaces">
                     <a href="pdf/NudosAmarres.pdf" download class="btn-pdf btn-down">Descargar PDF</a>
                     <hr class="separador-acordeon">
-					   <p style="text-align:center; color:#191970; font-weight:bold;">TUTORIALES</p>
-						<a href="https://youtu.be/XLf7TNkcw3k?si=Ni_Z1MJH3u4PTRfh" target="_blank" class="btn-pdf btn-youtube">FUGITIVO</a>
-						<a href="https://youtu.be/1oFpG0_6B7M?si=T5P-4uG8-jQAh66V" target="_blank" class="btn-pdf btn-youtube">DIAGONAL</a>
-						<a href="https://youtu.be/-t3qFiWg-eM?si=u-mu5pFIi2PxJikI" target="_blank" class="btn-pdf btn-youtube">REDONDO</a>
-						<a href="https://youtu.be/87GuMdoBxyw?si=Tn2kRWMJLA_9PcYU" target="_blank" class="btn-pdf btn-youtube">MARGARITA</a>
-						<a href="https://youtu.be/6Y738dsoRnc?si=mSvD-9AdfeIPH__Z" target="_blank" class="btn-pdf btn-youtube">CONTINUO</a>
-						<a href="https://youtu.be/HnKa6iejUr0?si=UFhqkM3-fsKFM62v" target="_blank" class="btn-pdf btn-youtube">PESCADOR</a>
+                    <p style="text-align:center; color:#191970; font-weight:bold;">TUTORIALES</p>
+                    <a href="https://youtu.be/XLf7TNkcw3k?si=Ni_Z1MJH3u4PTRfh" target="_blank" class="btn-pdf btn-youtube">FUGITIVO</a>
+                    <a href="https://youtu.be/1oFpG0_6B7M?si=T5P-4uG8-jQAh66V" target="_blank" class="btn-pdf btn-youtube">DIAGONAL</a>
+                    <a href="https://youtu.be/-t3qFiWg-eM?si=u-mu5pFIi2PxJikI" target="_blank" class="btn-pdf btn-youtube">REDONDO</a>
+                    <a href="https://youtu.be/87GuMdoBxyw?si=Tn2kRWMJLA_9PcYU" target="_blank" class="btn-pdf btn-youtube">MARGARITA</a>
+                    <a href="https://youtu.be/6Y738dsoRnc?si=mSvD-9AdfeIPH__Z" target="_blank" class="btn-pdf btn-youtube">CONTINUO</a>
+                    <a href="https://youtu.be/HnKa6iejUr0?si=UFhqkM3-fsKFM62v" target="_blank" class="btn-pdf btn-youtube">PESCADOR</a>
                 </div>
             </div>
         </div>
-        
 
         <div class="acordeon-item">
             <button class="acordeon-header" onclick="toggleAcordeon(this)">
@@ -320,7 +316,7 @@
                 <p><b>Recurso:</b></p>
                 <div class="opciones-enlaces">
                     <a href="pdf/Construcciones.pdf" download class="btn-pdf btn-down">Descargar PDF</a>
-					<hr class="separador-acordeon">
+                    <hr class="separador-acordeon">
                     <a href="https://youtu.be/jjYLJk7qbMA?si=DGxs9Q5VT6rNaWUS" target="_blank" class="btn-pdf btn-youtube">TRÍPODE</a>
                 </div>
             </div>
@@ -340,15 +336,23 @@
                 </div>
             </div>
         </div>
+
+        <div class="acordeon-item" id="tareas-item">
+            <button class="acordeon-header" onclick="toggleAcordeon(this)">
+                <img src="iconos/tarea.png" class="icono-img" alt="Icono"> TAREAS <span class="flecha">▼</span>
+            </button>
+            <div class="acordeon-content" id="tareas-content">
+                </div>
+        </div>
     </div>
 
-	<div class="contenedor-autor">
-		<span class="autor-texto">by: Luis Portillo</span>
-		<span class="fecha-texto">26/02/23</span>
-			<p style="width: 100%; text-align: center; margin-bottom: 10px; font-weight: normal;  color: #a8e6cf;">
-			Este sitio web ha sido desarrollado como una herramienta de apoyo digital, para el Campamento Estruendo 3.0
-		</p>
-	</div>	
+    <div class="contenedor-autor">
+        <span class="autor-texto">by: Luis Portillo</span>
+        <span class="fecha-texto">26/02/23</span>
+        <p style="width: 100%; text-align: center; margin-bottom: 10px; font-weight: normal; color: #a8e6cf;">
+            Este sitio web ha sido desarrollado como una herramienta de apoyo digital, para el Campamento Estruendo 3.0
+        </p>
+    </div>  
 
     <script>
         function actualizarReloj() {
@@ -356,7 +360,6 @@
             const opcionesFecha = { weekday: 'long', day: '2-digit', month: 'long', year: 'numeric' };
             const fechaFormateada = ahora.toLocaleDateString('es-ES', opcionesFecha);
             const horaFormateada = ahora.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
-
             document.getElementById('reloj-contenedor').innerHTML = `${fechaFormateada} <br> ${horaFormateada}`;
         }
 
@@ -383,6 +386,56 @@
             document.querySelectorAll('.acordeon-item').forEach(i => i.classList.remove('active'));
             if (!isActive) { item.classList.add('active'); }
         }
+
+        // --- LÓGICA DE TAREAS Y TIEMPO ---
+        function actualizarTareas() {
+            const ahora = new Date();
+
+            const inicio = new Date("2026-03-23T19:40:00");
+            const fin = new Date("2026-03-23T21:30:00");
+			
+            const contenedor = document.getElementById("tareas-content");
+
+            if (ahora < inicio) {
+                const diferencia = inicio - ahora;
+                const horas = Math.floor(diferencia / (1000 * 60 * 60));
+                const minutos = Math.floor((diferencia / 1000 / 60) % 60);
+                const segundos = Math.floor((diferencia / 1000) % 60);
+
+                contenedor.innerHTML = `
+                    <p style="text-align:center; color:#b22222; font-weight:bold; margin-bottom:5px;">No disponible</p>
+                    <p style="text-align:center; font-size: 0.9rem; margin:0;">Se desbloquea en:</p>
+                    <h2 style="text-align:center; color:#191970; margin-top:5px;">
+                        ${horas.toString().padStart(2,'0')}:${minutos.toString().padStart(2,'0')}:${segundos.toString().padStart(2,'0')}
+                    </h2>`;
+            } 
+            else if (ahora >= inicio && ahora <= fin) {
+                const diferencia = fin - ahora;
+                const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+                const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
+                const minutos = Math.floor((diferencia / 1000 / 60) % 60);
+                const segundos = Math.floor((diferencia / 1000) % 60);
+
+                let tiempoTexto = (dias > 0 ? `${dias}d ` : "") + 
+                    `${horas.toString().padStart(2,'0')}:${minutos.toString().padStart(2,'0')}:${segundos.toString().padStart(2,'0')}`;
+
+                contenedor.innerHTML = `
+                    <div style="text-align:center; margin-bottom: 15px; background: rgba(0,0,0,0.05); padding: 10px; border-radius: 10px;">
+                        <p style="color: #b22222; font-size: 0.75rem; margin: 0; text-transform: uppercase;">Cierra en:</p>
+                        <span style="color: #191970; font-weight: bold; font-size: 1.1rem;">${tiempoTexto}</span>
+                    </div>
+                    <p style="text-align:center; color:#191970; font-weight:bold;">Desafíos de explorador</p>
+                    <div class="opciones-enlaces">
+                        <a href="pdf/Desafíos.pdf" download class="btn-pdf btn-down">Descargar PDF</a>
+                    </div>`;
+            } 
+            else {
+                contenedor.innerHTML = `<p style="text-align:center; color:#b22222; font-weight:bold; padding: 20px;">⚠️ Tiempo finalizado</p>`;
+            }
+        }
+
+        setInterval(actualizarTareas, 1000);
+        actualizarTareas();
     </script>
 </body>
 </html>
